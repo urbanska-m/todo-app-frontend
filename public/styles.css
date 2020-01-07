@@ -4,6 +4,10 @@ body {
     background-attachment: fixed;
   }
 
+  .mainBody {
+    height: 400px;
+  }
+
 #sidebar {
   background: rgb(3, 55, 83, 0.8);
 
