@@ -1,14 +1,17 @@
 import React from 'react';
-import Header from './Header';
+import Sidebar from './Sidebar';
 
 class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Header/>
-      <p>Hello World</p>
-      </div>
+      <body>
+        <div class="container-fluid">
+          <div class="row">
+            <Sidebar />
+          </div>
+        </div>
+      </body>
     );
   }
 }
