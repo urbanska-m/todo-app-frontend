@@ -14,6 +14,14 @@ class App extends React.Component {
     ]
   };
 
+  deleteTask = (taskID) => {
+    const tasks = this.state.tasks;
+    const updatedTasks = tasks.filter(item => item.id !== taskID);
+    this.setState({
+      tasks: updatedTasks
+    });
+  }
+
   render() {
     return (
       <body>
@@ -23,7 +31,7 @@ class App extends React.Component {
             <div className="col-11 col-md-7">
               <div className="mainBody">
                 <AddNewTask />
-                <TaskArea jobs={this.state.tasks} />
+                <TaskArea jobs={this.state.tasks} deleteTaskFunc={this.deleteTask}/>
               </div>
             </div>
           </div>
