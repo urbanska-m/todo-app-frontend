@@ -7,7 +7,12 @@ class TaskArea extends React.Component {
     render() {
       return (
         <div>
-            <TasksToDo />
+            {
+              this.props.jobs.map(
+                (taskItem) =>
+                <TasksToDo item={taskItem} />
+              )
+            }
             <TasksDone />
         </div>
       );
