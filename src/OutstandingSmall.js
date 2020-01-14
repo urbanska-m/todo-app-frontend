@@ -8,7 +8,7 @@ class OutstandingSmall extends React.Component {
       <div className="col-3">
           <div className="float-right" id="outstandingSmall">
               <span className="wordsSmall">To do<br /></span>
-              <NumberToDoSmall />
+              <NumberToDoSmall counterOutstanding={this.props.counterOutstanding}/>
           </div>
       </div>
     );

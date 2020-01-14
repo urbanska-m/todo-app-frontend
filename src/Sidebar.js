@@ -10,9 +10,9 @@ class Sidebar extends React.Component {
       return (
          <div className="col-12 col-md-4">
            <div className="row" id="sidebar">
-             <OutstandingSmall />
+             <OutstandingSmall counterOutstanding={this.props.counterOutstanding} />
              <Title />
-             <TaskCounterLarge />
+             <TaskCounterLarge counterOutstanding={this.props.counterOutstanding} />
              <DoneSmall />
            </div>
          </div>
