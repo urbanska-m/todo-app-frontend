@@ -2,15 +2,16 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import AddNewTask from './AddNewTask';
 import TaskArea from './TaskArea';
+import uuidv4 from 'uuid/v4';
 
 class App extends React.Component {
 
   state = {
     tasks: [
-      { id: 1, description: "Buy groceries", completed: false },
-      { id: 2, description: "Iron shirts", completed: false },
-      { id: 3, description: "Tidy room", completed: false },
-      { id: 4, description: "Walk the dog", completed: true }
+      { id: uuidv4(), description: "Buy groceries", completed: false },
+      { id: uuidv4(), description: "Iron shirts", completed: false },
+      { id: uuidv4(), description: "Tidy room", completed: false },
+      { id: uuidv4(), description: "Walk the dog", completed: true }
     ]
   };
 
@@ -22,6 +23,27 @@ class App extends React.Component {
     });
   }
 
+  addTask = (taskDescription) => {
+
+    // Firstly define the task being added
+    const taskToAdd = {
+      id: uuidv4(),
+      description: taskDescription,
+      completed: false
+    };
+
+    // Get the current list of tasks from state
+    const currentTasks = this.state.tasks;
+
+    // Add the 'taskToAdd' to the array of tasks in state
+    currentTasks.push(taskToAdd);
+
+    // Update the state
+    this.setState({
+      tasks: currentTasks
+    });
+  }
+
   render() {
     return (
       <body>
@@ -30,7 +52,7 @@ class App extends React.Component {
             <Sidebar counterOutstanding={this.state.tasks.length} />
             <div className="col-11 col-md-7">
               <div className="mainBody">
-                <AddNewTask />
+                <AddNewTask addTaskFunc={this.addTask} />
                 <TaskArea jobs={this.state.tasks} deleteTaskFunc={this.deleteTask}/>
               </div>
             </div>

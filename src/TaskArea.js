@@ -10,7 +10,7 @@ class TaskArea extends React.Component {
             {
               this.props.jobs.map(
                 (taskItem) =>
-                <TasksToDo item={taskItem} deleteTaskFunc={this.props.deleteTaskFunc}/>
+                <TasksToDo key={taskItem.id} item={taskItem} deleteTaskFunc={this.props.deleteTaskFunc}/>
               )
             }
             <TasksDone />
