@@ -7,7 +7,7 @@ class TaskCounterLarge extends React.Component {
         <div className="d-none d-md-block col-md-12">
             <div id="taskCounter">
               To do: {this.props.counterOutstanding} <br />
-              Done: 1
+              Done: {this.props.counterDone}
             </div>
           </div>
       );

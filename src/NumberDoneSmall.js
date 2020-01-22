@@ -4,7 +4,7 @@ class NumberDoneSmall extends React.Component {
 
     render() {
       return (
-         <span className="numbersSmall">1</span>
+         <span className="numbersSmall"> {this.props.counterDone} </span>
       );
     }
   }

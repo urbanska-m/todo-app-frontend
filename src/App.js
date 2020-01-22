@@ -14,6 +14,7 @@ class App extends React.Component {
     ],
 
     completedTasks: [
+      { id: uuidv4(), description: "Walk the dog", completed: true },
       { id: uuidv4(), description: "Walk the dog", completed: true }
     ]
   };
@@ -56,7 +57,7 @@ class App extends React.Component {
       
         <div className="container-fluid">
           <div className="row">
-            <Sidebar counterOutstanding={this.state.tasks.length} />
+            <Sidebar counterOutstanding={this.state.tasks.length} counterDone={this.state.completedTasks.length} />
             <div className="col-11 col-md-7">
               <div className="mainBody">
                 <AddNewTask addTaskFunc={this.addTask} />

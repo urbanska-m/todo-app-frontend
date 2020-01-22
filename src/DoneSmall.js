@@ -8,7 +8,7 @@ class DoneSmall extends React.Component {
         <div className="col-3">
             <div className="float-left" id="doneSmall">
               <span className="wordsSmall">Done<br /></span>
-              <NumberDoneSmall />
+              <NumberDoneSmall counterDone={this.props.counterDone}/>
             </div>
           </div>
       );

@@ -12,8 +12,8 @@ class Sidebar extends React.Component {
            <div className="row" id="sidebar">
              <OutstandingSmall counterOutstanding={this.props.counterOutstanding} />
              <Title />
-             <TaskCounterLarge counterOutstanding={this.props.counterOutstanding} />
-             <DoneSmall />
+             <TaskCounterLarge counterOutstanding={this.props.counterOutstanding} counterDone={this.props.counterDone} />
+             <DoneSmall counterDone={this.props.counterDone}/>
            </div>
          </div>
       );
