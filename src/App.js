@@ -15,7 +15,7 @@ class App extends React.Component {
 
     completedTasks: [
       { id: uuidv4(), description: "Walk the dog", completed: true },
-      { id: uuidv4(), description: "Walk the dog", completed: true }
+      { id: uuidv4(), description: "Water plants", completed: true }
     ]
   };
 
@@ -26,6 +26,11 @@ class App extends React.Component {
     const updatedTasks = tasks.filter(item => item.id !== taskID);
     this.setState({
       tasks: updatedTasks
+    });
+    const completedTasks = this.state.completedTasks;
+    const updatedCompleted = completedTasks.filter(item => item.id !== taskID);
+    this.setState({
+      completedTasks: updatedCompleted
     });
   }
 
