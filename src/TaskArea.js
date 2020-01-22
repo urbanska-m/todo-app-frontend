@@ -13,7 +13,13 @@ class TaskArea extends React.Component {
                 <TasksToDo key={taskItem.id} item={taskItem} deleteTaskFunc={this.props.deleteTaskFunc}/>
               )
             }
-            <TasksDone />
+            {
+              this.props.doneJobs.map(
+                (taskItem) =>
+                <TasksDone key={taskItem.id} item={taskItem} />
+              )
+            }
+            
         </div>
       );
     }

@@ -3,17 +3,19 @@ import React from 'react';
 class AddNewTask extends React.Component {
 
   state = {
-    taskDescription: "Enter your task..."
+    taskDescription: ""
   }
 
   addTask = () => {
     this.props.addTaskFunc(this.state.taskDescription);
+    
   }
 
   taskDescriptionChanged = (event) => {
     this.setState({
       taskDescription: event.target.value
     });
+   
   }
 
 

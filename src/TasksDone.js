@@ -7,7 +7,7 @@ class TasksDone extends React.Component {
         <div className="tasksDone col-12">
             <div className="row">
               <div className="tickboxes"><input type="checkbox" checked /></div>
-              Task 4
+              {this.props.item.description}
               <div className="editButton"><input type="button" className="btn btn-outline-light btn-sm" value="Edit" /></div>
               <div className="deleteButton"><input type="button" className="btn btn-outline-light btn-sm" value="Delete" /></div>
             </div>

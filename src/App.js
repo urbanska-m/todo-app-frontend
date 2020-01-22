@@ -10,10 +10,15 @@ class App extends React.Component {
     tasks: [
       { id: uuidv4(), description: "Buy groceries", completed: false },
       { id: uuidv4(), description: "Iron shirts", completed: false },
-      { id: uuidv4(), description: "Tidy room", completed: false },
+      { id: uuidv4(), description: "Tidy room", completed: false }
+    ],
+
+    completedTasks: [
       { id: uuidv4(), description: "Walk the dog", completed: true }
     ]
   };
+
+ 
 
   deleteTask = (taskID) => {
     const tasks = this.state.tasks;
@@ -40,25 +45,27 @@ class App extends React.Component {
 
     // Update the state
     this.setState({
-      tasks: currentTasks
+      tasks: currentTasks,
+  
     });
+  
   }
 
   render() {
     return (
-      <body>
+      
         <div className="container-fluid">
           <div className="row">
             <Sidebar counterOutstanding={this.state.tasks.length} />
             <div className="col-11 col-md-7">
               <div className="mainBody">
                 <AddNewTask addTaskFunc={this.addTask} />
-                <TaskArea jobs={this.state.tasks} deleteTaskFunc={this.deleteTask}/>
+                <TaskArea jobs={this.state.tasks} doneJobs={this.state.completedTasks} deleteTaskFunc={this.deleteTask}/>
               </div>
             </div>
           </div>
         </div>
-      </body>
+      
     );
   }
 }
