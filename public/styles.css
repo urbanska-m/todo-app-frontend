@@ -132,7 +132,7 @@ input[type=text] {
 .tasksToDo, .tasksDone {
   font-size: 18px;
   vertical-align: middle;
-  position: relative;
+  
 }
 
 
@@ -140,6 +140,7 @@ input[type=text] {
   margin-top: 0px;
   padding: 12px 8px 12px 40px;
   background: #eee;
+  
 }
 
 .tasksToDo .row {
@@ -152,16 +153,29 @@ input[type=text] {
 
 
 .tasksDone {
-  margin-top: 20px;
+  margin-top: 0px;
   padding: 12px 8px 12px 40px;
   background: #888;
   color: #fff;
   text-decoration: line-through;
 }
 
-/* placeholder styling */
+
+
+.doneTaskArea {
+  margin-top: 20px;
+}
+
+/* placeholder styling
 .editButton {
   margin-left: 50%;
   padding-right: 10px;
+}  */
+
+.buttonGroup {
+display: flex;
+justify-content: flex-end;
 }
 
+
+/* BUTTONS IN TODO ARE DIFFERENT DIVS TO BUTTONS IN DONE */
