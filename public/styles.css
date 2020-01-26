@@ -128,6 +128,9 @@ input[type=text] {
 
 
 
+.doneTaskArea {
+  margin-top: 20px;
+}
 
 .tasksToDo, .tasksDone {
   font-size: 18px;
@@ -135,10 +138,12 @@ input[type=text] {
   
 }
 
-
 .tasksToDo {
-  margin-top: 0px;
-  padding: 12px 8px 12px 40px;
+  
+  /* padding-left: 30px; */
+  /* padding-top: 12px;
+  padding-bottom: 12px; */
+  /* padding: 12px 8px 12px 30px; */
   background: #eee;
   
 }
@@ -154,7 +159,6 @@ input[type=text] {
 
 .tasksDone {
   margin-top: 0px;
-  padding: 12px 8px 12px 40px;
   background: #888;
   color: #fff;
   text-decoration: line-through;
@@ -162,20 +166,20 @@ input[type=text] {
 
 
 
-.doneTaskArea {
-  margin-top: 20px;
+
+
+.tickboxes {
+  padding-top: 10px;
+  margin-left: 20px;
 }
 
-/* placeholder styling
-.editButton {
-  margin-left: 50%;
-  padding-right: 10px;
-}  */
+.taskDesc {
+  margin-left: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
 
 .buttonGroup {
-display: flex;
-justify-content: flex-end;
+  padding-top: 10px;
+  
 }
-
-
-/* BUTTONS IN TODO ARE DIFFERENT DIVS TO BUTTONS IN DONE */

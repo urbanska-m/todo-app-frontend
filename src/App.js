@@ -42,20 +42,16 @@ class App extends React.Component {
       description: taskDescription,
       completed: false
     };
-
     // Get the current list of tasks from state
     const currentTasks = this.state.tasks;
-
     // Add the 'taskToAdd' to the array of tasks in state
     currentTasks.push(taskToAdd);
-
     // Update the state
     this.setState({
-      tasks: currentTasks,
-  
+      tasks: currentTasks
     });
-  
   }
+
 
   render() {
     return (

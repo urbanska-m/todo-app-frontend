@@ -6,12 +6,18 @@ class TasksToDo extends React.Component {
     this.props.deleteTaskFunc(this.props.item.id);
   }
 
+  boxTicked = () => {
+
+  }
+
   render() {
     return (
       <div className="tasksToDo col-12">
         <div className="row">
-          <input type="checkbox" />
-          {this.props.item.description}
+          <div className="tickboxes"><input type="checkbox" /></div>
+          <div className="taskDesc">
+            {this.props.item.description}
+          </div>
           <div className="buttonGroup">
             <input type="button" className="btn btn-outline-secondary btn-sm" value="Edit" />
             <input type="button" className="btn btn-outline-secondary btn-sm" value="Delete" onClick={this.deleteClicked} />
