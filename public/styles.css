@@ -145,11 +145,13 @@ input[type=text] {
   padding-bottom: 12px; */
   /* padding: 12px 8px 12px 30px; */
   background: #eee;
+  overflow: auto;
   
 }
 
 .tasksToDo .row {
   border-bottom: 1px solid lightgray;
+  
 }
 
 .tasksToDo .row:hover {
@@ -181,5 +183,6 @@ input[type=text] {
 
 .buttonGroup {
   padding-top: 10px;
+  padding-right: 10px;
   
 }

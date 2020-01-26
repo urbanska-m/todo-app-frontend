@@ -18,7 +18,7 @@ class TasksToDo extends React.Component {
           <div className="taskDesc">
             {this.props.item.description}
           </div>
-          <div className="buttonGroup">
+          <div className="buttonGroup ml-auto">
             <input type="button" className="btn btn-outline-secondary btn-sm" value="Edit" />
             <input type="button" className="btn btn-outline-secondary btn-sm" value="Delete" onClick={this.deleteClicked} />
           </div>
