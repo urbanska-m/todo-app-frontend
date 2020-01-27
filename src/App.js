@@ -54,7 +54,24 @@ class App extends React.Component {
 
 
   completedTask = (taskID) => {
-    alert(`You want to mark task ${taskID} as done`)
+    // First find task that needs to be updated
+    const tasksMarkedDone = this.state.tasks; // Array of tasks
+    for (let i = 0; i < tasksMarkedDone.length; i++) {
+      const task = tasksMarkedDone[i];
+      
+
+
+      // Update a property on the identified task
+      if (task.id === taskID) {
+        task.completed = true;
+        break;
+      }
+    }
+   
+    // Update state to reflect changes made to the task
+    this.setState({
+      tasks: tasksMarkedDone
+    });
   }
 
 
