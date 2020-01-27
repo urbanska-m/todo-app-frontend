@@ -58,8 +58,6 @@ class App extends React.Component {
     const tasksMarkedDone = this.state.tasks; // Array of tasks
     for (let i = 0; i < tasksMarkedDone.length; i++) {
       const task = tasksMarkedDone[i];
-      
-
 
       // Update a property on the identified task
       if (task.id === taskID) {
@@ -67,7 +65,6 @@ class App extends React.Component {
         break;
       }
     }
-   
     // Update state to reflect changes made to the task
     this.setState({
       tasks: tasksMarkedDone

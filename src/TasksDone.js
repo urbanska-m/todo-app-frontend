@@ -10,7 +10,7 @@ class TasksDone extends React.Component {
     return (
       <div className="tasksDone col-12">
         <div className="row">
-          <div className="tickboxes"><input type="checkbox" checked /></div>
+          <div className="tickboxes"><input type="checkbox" defaultChecked /></div>
           <div className="taskDesc">
             {this.props.item.description}
           </div>
