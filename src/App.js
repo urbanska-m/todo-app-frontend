@@ -20,20 +20,6 @@ class App extends React.Component {
   };
 
  
-
-  deleteTask = (taskID) => {
-    const tasks = this.state.tasks;
-    const updatedTasks = tasks.filter(item => item.id !== taskID);
-    this.setState({
-      tasks: updatedTasks
-    });
-    const completedTasks = this.state.completedTasks;
-    const updatedCompleted = completedTasks.filter(item => item.id !== taskID);
-    this.setState({
-      completedTasks: updatedCompleted
-    });
-  }
-
   addTask = (taskDescription) => {
 
     // Firstly define the task being added
@@ -51,6 +37,27 @@ class App extends React.Component {
       tasks: currentTasks
     });
   }
+ 
+ 
+  deleteTask = (taskID) => {
+    const tasks = this.state.tasks;
+    const updatedTasks = tasks.filter(item => item.id !== taskID);
+    this.setState({
+      tasks: updatedTasks
+    });
+    const completedTasks = this.state.completedTasks;
+    const updatedCompleted = completedTasks.filter(item => item.id !== taskID);
+    this.setState({
+      completedTasks: updatedCompleted
+    });
+  }
+
+
+  completedTask = (taskID) => {
+    alert(`You want to mark task ${taskID} as done`)
+  }
+
+
 
 
   render() {
@@ -62,7 +69,11 @@ class App extends React.Component {
             <div className="col-11 col-md-7">
               <div className="mainBody">
                 <AddNewTask addTaskFunc={this.addTask} />
-                <TaskArea jobs={this.state.tasks} doneJobs={this.state.completedTasks} deleteTaskFunc={this.deleteTask}/>
+              <TaskArea
+                jobs={this.state.tasks}
+                doneJobs={this.state.completedTasks}
+                deleteTaskFunc={this.deleteTask}
+                completedTaskFunc={this.completedTask} />
               </div>
             </div>
           </div>
