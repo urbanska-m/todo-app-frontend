@@ -69,11 +69,42 @@ class App extends React.Component {
     this.setState({
       tasks: tasksMarkedDone
     });
+
+    // Get the list of incomplete tasks from state
+const incompleteTasks = this.state.tasks;
+let completedTask;
+for(let i = 0; i < incompleteTasks.length; i++) {
+    // Identify the item that has been marked as complete
+    if(incompleteTasks[i].id === taskID) {
+        // Remove it from the array of incomplete tasks
+        completedTask = incompleteTasks[i];
+        incompleteTasks.splice(i, 1);
+        break;
+    }
+}
+
+// Add it into the array of COMPLETE tasks
+const completeTasks = this.state.completedTasks;
+completeTasks.push(completedTask);
+
+// Update state 
+this.setState({
+    tasks: incompleteTasks,
+    completedTasks: completeTasks
+});
   }
 
 
+  // MOVING COMPLETED TASK TO SECOND LIST
+  // WHEN CHECKBOX CLICKED, 'COMPLETED' BECOMES TRUE
+  // IF COMPLETED === TRUE, MOVE TO completedTasks ARRAY
 
 
+
+
+
+
+  
   render() {
     return (
       
@@ -87,7 +118,8 @@ class App extends React.Component {
                 jobs={this.state.tasks}
                 doneJobs={this.state.completedTasks}
                 deleteTaskFunc={this.deleteTask}
-                completedTaskFunc={this.completedTask} />
+                completedTaskFunc={this.completedTask}
+                />
               </div>
             </div>
           </div>

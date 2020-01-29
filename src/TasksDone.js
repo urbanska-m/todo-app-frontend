@@ -6,6 +6,7 @@ class TasksDone extends React.Component {
     this.props.deleteTaskFunc(this.props.item.id);
   }
 
+
   render() {
     return (
       <div className="tasksDone col-12">

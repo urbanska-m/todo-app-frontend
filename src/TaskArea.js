@@ -15,7 +15,8 @@ class TaskArea extends React.Component {
                   key={taskItem.id}
                   item={taskItem}
                   deleteTaskFunc={this.props.deleteTaskFunc}
-                  completedTaskFunc={this.props.completedTaskFunc} />
+                  completedTaskFunc={this.props.completedTaskFunc}
+                  />
             )}
         </div>
         <div className="doneTaskArea">

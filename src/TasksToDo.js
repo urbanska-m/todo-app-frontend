@@ -10,11 +10,13 @@ class TasksToDo extends React.Component {
     this.props.completedTaskFunc(this.props.item.id);
   }
 
+ 
+
   render() {
     return (
       <div className="tasksToDo col-12">
         <div className="row">
-          <div className="tickboxes"><input type="checkbox" onClick={this.markAsDone}/></div>
+          <div className="tickboxes"><input type="checkbox" onClick={this.markAsDone} /></div>
           <div className="taskDesc">
             {this.props.item.description}
           </div>
