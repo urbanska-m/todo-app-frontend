@@ -39,6 +39,26 @@ class App extends React.Component {
   }
 
 
+  editTask = (taskID) => {
+    const taskToEdit = this.state.tasks;
+    for (let i = 0; i < taskToEdit.length; i++) {
+      const task = taskToEdit[i];
+
+      if (task.id === taskID) {
+        task.description = null;
+        break;
+      }
+    }
+      this.setState({
+        tasks: taskToEdit
+      });
+  }
+
+
+
+
+
+
   deleteTask = (taskID) => {
     const tasks = this.state.tasks;
     const updatedTasks = tasks.filter(item => item.id !== taskID);
@@ -108,6 +128,7 @@ class App extends React.Component {
                 doneJobs={this.state.completedTasks}
                 deleteTaskFunc={this.deleteTask}
                 completedTaskFunc={this.completedTask}
+                editTaskFunc={this.editTask}
               />
             </div>
           </div>

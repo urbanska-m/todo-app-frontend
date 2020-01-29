@@ -10,7 +10,9 @@ class TasksToDo extends React.Component {
     this.props.completedTaskFunc(this.props.item.id);
   }
 
- 
+ editTask = () => {
+   this.props.editTaskFunc(this.props.item.id);
+ }
 
   render() {
     return (
@@ -21,7 +23,7 @@ class TasksToDo extends React.Component {
             {this.props.item.description}
           </div>
           <div className="buttonGroup ml-auto">
-            <input type="button" className="btn btn-outline-secondary btn-sm" value="Edit" />
+            <input type="button" className="btn btn-outline-secondary btn-sm" value="Edit" onClick={this.editTask} />
             <input type="button" className="btn btn-outline-secondary btn-sm" value="Delete" onClick={this.deleteClicked} />
           </div>
         </div>

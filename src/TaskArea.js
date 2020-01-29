@@ -16,6 +16,7 @@ class TaskArea extends React.Component {
                   item={taskItem}
                   deleteTaskFunc={this.props.deleteTaskFunc}
                   completedTaskFunc={this.props.completedTaskFunc}
+                  editTaskFunc={this.props.editTaskFunc}
                   />
             )}
         </div>
