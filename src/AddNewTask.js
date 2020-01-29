@@ -22,7 +22,7 @@ class AddNewTask extends React.Component {
       return (
         <div className="row">
             <div className="inputField col-10">
-                <input type="text" className="form-control" placeholder="New task..." minLength="1" maxLength="100" onChange={this.taskDescriptionChanged} />
+                <input value={this.state.taskDescription} className="form-control" placeholder="New task..." minLength="1" maxLength="100" onChange={this.taskDescriptionChanged} />
             </div>
             <div className="addButton col-1">
                 <input type="submit" className="btn btn-light" value="Add" onClick={this.addTask}/>
