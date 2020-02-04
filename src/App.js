@@ -39,7 +39,8 @@ class App extends React.Component {
 
     this.setState({
       tasks: currentTasks,
-      description: ""
+      description: "",
+      editItem: false
     });
 
   };
@@ -74,7 +75,9 @@ class App extends React.Component {
 
     this.setState({
       tasks: filteredTasks,
-      description: selectedItem.description
+      description: selectedItem.description,
+      id: selectedItem.id,
+      editItem: true
     });
     // const taskToEdit = this.state.tasks;
     // for (let i = 0; i < taskToEdit.length; i++) {
@@ -159,7 +162,12 @@ class App extends React.Component {
           <Sidebar counterOutstanding={this.state.tasks.length} counterDone={this.state.completedTasks.length} />
           <div className="col-11 col-md-7">
             <div className="mainBody">
-              <AddNewTask addTaskFunc={this.addTask} item={this.state.description} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+              <AddNewTask 
+                addTaskFunc={this.addTask} 
+                item={this.state.description} 
+                handleChange={this.handleChange} 
+                handleSubmit={this.handleSubmit}
+                editItem={this.state.editItem} />
               <TaskArea
                 jobs={this.state.tasks}
                 doneJobs={this.state.completedTasks}
