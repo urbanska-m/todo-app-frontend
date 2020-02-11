@@ -25,6 +25,7 @@ class App extends React.Component {
     });
   };
 
+
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -46,25 +47,6 @@ class App extends React.Component {
   };
 
 
-  // addTask = (taskDescription) => {
-
-  //   // Firstly define the task being added
-  //   const taskToAdd = {
-  //     id: uuidv4(),
-  //     description: taskDescription,
-  //     completed: false
-  //   };
-  //   // Get the current list of tasks from state
-  //   const currentTasks = this.state.tasks;
-  //   // Add the 'taskToAdd' to the array of tasks in state
-  //   currentTasks.push(taskToAdd);
-  //   // Update the state
-  //   this.setState({
-  //     tasks: currentTasks
-  //   });
-  // }
-
-
   editTask = (taskID) => {
     const tasks = this.state.tasks;
     const filteredTasks = tasks.filter(item => item.id !== taskID);
@@ -79,24 +61,8 @@ class App extends React.Component {
       id: selectedItem.id,
       editItem: true
     });
-    // const taskToEdit = this.state.tasks;
-    // for (let i = 0; i < taskToEdit.length; i++) {
-    //   const task = taskToEdit[i];
-
-    //   if (task.id === taskID) {
-    //     task.description = null;
-    //     break;
-    //   }
-    // }
-    //   this.setState({
-    //     tasks: taskToEdit
-    //   });
     console.log(taskID);
   }
-
-
-
-
 
 
   deleteTask = (taskID) => {
@@ -163,7 +129,6 @@ class App extends React.Component {
           <div className="col-11 col-md-7">
             <div className="mainBody">
               <AddNewTask 
-                addTaskFunc={this.addTask} 
                 item={this.state.description} 
                 handleChange={this.handleChange} 
                 handleSubmit={this.handleSubmit}
