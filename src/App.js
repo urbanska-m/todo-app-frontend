@@ -113,6 +113,37 @@ class App extends React.Component {
     });
   }
 
+  markIncomplete = (taskID) => {
+    const taskUnticked = this.state.completedTasks;
+    for (let i = 0; i < taskUnticked.length; i++) {
+      const task = taskUnticked[i];
+
+      if (task.id === taskID) {
+        task.completed = false;
+        break;
+      }
+    }
+    this.setState({
+      completedTasks: taskUnticked
+    });
+
+    const doneTasks = this.state.completedTasks;
+    let untickedTask;
+    for (let i = 0; i < doneTasks.length; i++) {
+      if (doneTasks[i].id === taskID) {
+        untickedTask = doneTasks[i];
+        doneTasks.splice(i, 1);
+        break;
+      }
+    }
+    const outstandingList = this.state.tasks;
+    outstandingList.push(untickedTask);
+
+    this.setState({
+      completedTasks: doneTasks,
+      tasks: outstandingList
+    });
+  }
 
 
 
@@ -135,6 +166,7 @@ class App extends React.Component {
                 deleteTaskFunc={this.deleteTask}
                 completedTaskFunc={this.completedTask}
                 editTaskFunc={this.editTask}
+                markIncompleteFunc={this.markIncomplete}
               />
             </div>
           </div>

@@ -28,6 +28,7 @@ class TaskArea extends React.Component {
                 key={taskItem.id} 
                 item={taskItem} 
                 deleteTaskFunc={this.props.deleteTaskFunc}
+                markIncompleteFunc={this.props.markIncompleteFunc}
                  />
             )
           }

@@ -6,11 +6,15 @@ class TasksDone extends React.Component {
     this.props.deleteTaskFunc(this.props.item.id);
   }
 
+  markIncomplete = () => {
+    this.props.markIncompleteFunc(this.props.item.id);
+  }
+
   render() {
     return (
       <div className="tasksDone col-12">
         <div className="row">
-          <div className="tickboxes"><input type="checkbox" defaultChecked /></div>
+          <div className="tickboxes"><input type="checkbox" defaultChecked onClick={this.markIncomplete} /></div>
           <div className="taskDesc">
             {this.props.item.description}
           </div>
