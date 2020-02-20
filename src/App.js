@@ -13,10 +13,7 @@ class App extends React.Component {
     completed: false,
     editItem: false,
 
-    completedTasks: [
-      { id: uuidv4(), description: "Walk the dog", completed: true },
-      { id: uuidv4(), description: "Water plants", completed: true }
-    ]
+    completedTasks: [],
   };
 
   handleChange = (e) => {
@@ -61,7 +58,6 @@ class App extends React.Component {
       id: selectedItem.id,
       editItem: true
     });
-    console.log(taskID);
   }
 
 

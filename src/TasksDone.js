@@ -6,7 +6,6 @@ class TasksDone extends React.Component {
     this.props.deleteTaskFunc(this.props.item.id);
   }
 
-
   render() {
     return (
       <div className="tasksDone col-12">
@@ -16,7 +15,6 @@ class TasksDone extends React.Component {
             {this.props.item.description}
           </div>
           <div className="buttonGroup ml-auto">
-            <input type="button" className="btn btn-outline-light btn-sm" value="Edit" />
             <input type="button" className="btn btn-outline-light btn-sm" value="Delete" onClick={this.deleteClicked} />
           </div>
         </div>
