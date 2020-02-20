@@ -6,7 +6,7 @@ class TaskArea extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="taskLists">
         <div className="outstandingTaskArea">
           {
             this.props.jobs.map(

@@ -186,3 +186,8 @@ vertical-align: middle;
   padding-right: 10px;
   
 }
+
+.taskLists {
+  height: 500px;
+  overflow: scroll;
+}

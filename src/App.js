@@ -47,7 +47,7 @@ class App extends React.Component {
   editTask = (taskID) => {
     const tasks = this.state.tasks;
     const filteredTasks = tasks.filter(item => item.id !== taskID);
-    
+
     const selectedItem = tasks.find(item => item.id === taskID)
 
     console.log(selectedItem);
@@ -155,9 +155,9 @@ class App extends React.Component {
           <Sidebar counterOutstanding={this.state.tasks.length} counterDone={this.state.completedTasks.length} />
           <div className="col-11 col-md-7">
             <div className="mainBody">
-              <AddNewTask 
-                item={this.state.description} 
-                handleChange={this.handleChange} 
+              <AddNewTask
+                item={this.state.description}
+                handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
                 editItem={this.state.editItem} />
               <TaskArea
