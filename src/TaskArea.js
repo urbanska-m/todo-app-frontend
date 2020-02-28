@@ -12,7 +12,7 @@ class TaskArea extends React.Component {
             this.props.jobs.map(
               (taskItem) =>
                 <TasksToDo
-                  key={taskItem.id}
+                  key={taskItem.taskId}
                   item={taskItem}
                   deleteTaskFunc={this.props.deleteTaskFunc}
                   completedTaskFunc={this.props.completedTaskFunc}
@@ -25,7 +25,7 @@ class TaskArea extends React.Component {
             this.props.doneJobs.map(
               (taskItem) =>
                 <TasksDone 
-                key={taskItem.id} 
+                key={taskItem.taskId} 
                 item={taskItem} 
                 deleteTaskFunc={this.props.deleteTaskFunc}
                 markIncompleteFunc={this.props.markIncompleteFunc}

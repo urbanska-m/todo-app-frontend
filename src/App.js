@@ -3,22 +3,38 @@ import Sidebar from './Sidebar';
 import AddNewTask from './AddNewTask';
 import TaskArea from './TaskArea';
 import uuidv4 from 'uuid/v4';
+import axios from "axios";
 
 class App extends React.Component {
 
   state = {
     tasks: [],
-    id: uuidv4(),
-    description: "",
+    taskId: uuidv4(),
+    taskDescription: "",
     completed: false,
     editItem: false,
 
     completedTasks: [],
   };
 
+  componentDidMount = () => {
+    // Fetch tasks from API
+    axios.get('https://bgto94b970.execute-api.eu-west-2.amazonaws.com/dev/tasks')
+      .then((response) => {
+    // handle success
+      this.setState({
+        tasks: response.data.tasks
+      })
+    })
+    .catch(function (error) {
+    // handle error
+      console.error(error);
+    });
+  }
+
   handleChange = (e) => {
     this.setState({
-      description: e.target.value
+      taskDescription: e.target.value
     });
   };
 
@@ -27,8 +43,8 @@ class App extends React.Component {
     e.preventDefault();
 
     const taskToAdd = {
-      id: uuidv4(),
-      description: this.state.description,
+      taskId: uuidv4(),
+      taskDescription: this.state.taskDescription,
       completed: false,
       editItem: false
     }
@@ -37,7 +53,7 @@ class App extends React.Component {
 
     this.setState({
       tasks: currentTasks,
-      description: "",
+      taskDescription: "",
       editItem: false
     });
 
@@ -46,16 +62,16 @@ class App extends React.Component {
 
   editTask = (taskID) => {
     const tasks = this.state.tasks;
-    const filteredTasks = tasks.filter(item => item.id !== taskID);
+    const filteredTasks = tasks.filter(item => item.taskId !== taskID);
 
-    const selectedItem = tasks.find(item => item.id === taskID)
+    const selectedItem = tasks.find(item => item.taskId === taskID)
 
     console.log(selectedItem);
 
     this.setState({
       tasks: filteredTasks,
-      description: selectedItem.description,
-      id: selectedItem.id,
+      taskDescription: selectedItem.taskDescription,
+      taskId: selectedItem.taskId,
       editItem: true
     });
   }
@@ -63,12 +79,12 @@ class App extends React.Component {
 
   deleteTask = (taskID) => {
     const tasks = this.state.tasks;
-    const updatedTasks = tasks.filter(item => item.id !== taskID);
+    const updatedTasks = tasks.filter(item => item.taskId !== taskID);
     this.setState({
       tasks: updatedTasks
     });
     const completedTasks = this.state.completedTasks;
-    const updatedCompleted = completedTasks.filter(item => item.id !== taskID);
+    const updatedCompleted = completedTasks.filter(item => item.taskId !== taskID);
     this.setState({
       completedTasks: updatedCompleted
     });
@@ -82,7 +98,7 @@ class App extends React.Component {
       const task = tasksMarkedDone[i];
 
       // Update a property on the identified task
-      if (task.id === taskID) {
+      if (task.taskId === taskID) {
         task.completed = true;
         break;
       }
@@ -96,7 +112,7 @@ class App extends React.Component {
     let completedTask;
     for (let i = 0; i < incompleteTasks.length; i++) {
       // Identify the item that has been marked as complete
-      if (incompleteTasks[i].id === taskID) {
+      if (incompleteTasks[i].taskId === taskID) {
         // Remove it from the array of incomplete tasks
         completedTask = incompleteTasks[i];
         incompleteTasks.splice(i, 1);
@@ -118,7 +134,7 @@ class App extends React.Component {
     for (let i = 0; i < taskUnticked.length; i++) {
       const task = taskUnticked[i];
 
-      if (task.id === taskID) {
+      if (task.taskId === taskID) {
         task.completed = false;
         break;
       }
@@ -130,7 +146,7 @@ class App extends React.Component {
     const doneTasks = this.state.completedTasks;
     let untickedTask;
     for (let i = 0; i < doneTasks.length; i++) {
-      if (doneTasks[i].id === taskID) {
+      if (doneTasks[i].taskId === taskID) {
         untickedTask = doneTasks[i];
         doneTasks.splice(i, 1);
         break;
@@ -156,7 +172,7 @@ class App extends React.Component {
           <div className="col-11 col-md-7">
             <div className="mainBody">
               <AddNewTask
-                item={this.state.description}
+                item={this.state.taskDescription}
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
                 editItem={this.state.editItem} />

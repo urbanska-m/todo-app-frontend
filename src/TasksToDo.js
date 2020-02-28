@@ -3,15 +3,15 @@ import React from 'react';
 class TasksToDo extends React.Component {
 
   deleteClicked = () => {
-    this.props.deleteTaskFunc(this.props.item.id);
+    this.props.deleteTaskFunc(this.props.item.taskId);
   }
 
   markAsDone = () => {
-    this.props.completedTaskFunc(this.props.item.id);
+    this.props.completedTaskFunc(this.props.item.taskId);
   }
 
  editTask = () => {
-   this.props.editTaskFunc(this.props.item.id);
+   this.props.editTaskFunc(this.props.item.taskId);
  }
 
   render() {
@@ -20,7 +20,7 @@ class TasksToDo extends React.Component {
         <div className="row">
           <div className="tickboxes"><input type="checkbox" onClick={this.markAsDone} /></div>
           <div className="taskDesc">
-            {this.props.item.description}
+            {this.props.item.taskDescription}
           </div>
           <div className="buttonGroup ml-auto">
             <input type="button" className="btn btn-outline-secondary btn-sm" value="Edit" onClick={this.editTask} />
