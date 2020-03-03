@@ -46,17 +46,25 @@ class App extends React.Component {
       taskId: uuidv4(),
       taskDescription: this.state.taskDescription,
       completed: false,
-      editItem: false
+      userId: 1
+      // editItem: false
     }
 
-    const currentTasks = [...this.state.tasks, taskToAdd];
+    axios.post('https://bgto94b970.execute-api.eu-west-2.amazonaws.com/dev/tasks', taskToAdd)
+      .then((response) => {
+     const currentTasks = [...this.state.tasks, taskToAdd];
 
-    this.setState({
+     this.setState({
       tasks: currentTasks,
       taskDescription: "",
-      editItem: false
+      // editItem: false
     });
 
+    })
+    .catch(function (error) {
+    // handle error
+      console.error(error);
+    });
   };
 
 
