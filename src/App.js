@@ -46,7 +46,7 @@ class App extends React.Component {
       taskId: uuidv4(),
       taskDescription: this.state.taskDescription,
       completed: false,
-      userId: 1
+      userId: 1,
       // editItem: false
     }
 
@@ -57,7 +57,7 @@ class App extends React.Component {
      this.setState({
       tasks: currentTasks,
       taskDescription: "",
-      // editItem: false
+      editItem: false
     });
 
     })
@@ -71,16 +71,24 @@ class App extends React.Component {
   editTask = (taskID) => {
     const tasks = this.state.tasks;
     const filteredTasks = tasks.filter(item => item.taskId !== taskID);
+    const selectedItem = tasks.find(item => item.taskId === taskID);
 
-    const selectedItem = tasks.find(item => item.taskId === taskID)
-
-    console.log(selectedItem);
-
+    axios.put(`https://bgto94b970.execute-api.eu-west-2.amazonaws.com/dev/tasks/${taskID}`, selectedItem)
+      .then((response) => {
+    // handle success
+    
     this.setState({
       tasks: filteredTasks,
       taskDescription: selectedItem.taskDescription,
       taskId: selectedItem.taskId,
+      completed: false,
       editItem: true
+    });
+
+    })
+    .catch(function (error) {
+    // handle error
+      console.error(error);
     });
   }
 
