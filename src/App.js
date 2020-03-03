@@ -86,15 +86,26 @@ class App extends React.Component {
 
 
   deleteTask = (taskID) => {
+    
     const tasks = this.state.tasks;
+    const completedTasks = this.state.completedTasks;
+
+    axios.delete(`https://bgto94b970.execute-api.eu-west-2.amazonaws.com/dev/tasks/${taskID}`)
+      .then((response) => {
+    // handle success
     const updatedTasks = tasks.filter(item => item.taskId !== taskID);
     this.setState({
       tasks: updatedTasks
     });
-    const completedTasks = this.state.completedTasks;
     const updatedCompleted = completedTasks.filter(item => item.taskId !== taskID);
     this.setState({
       completedTasks: updatedCompleted
+    });
+
+    })
+    .catch(function (error) {
+    // handle error
+      console.error(error);
     });
   }
 
