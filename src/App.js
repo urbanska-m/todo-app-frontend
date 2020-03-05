@@ -73,31 +73,31 @@ class App extends React.Component {
 // This function is then fired to 'Update' instead of handleSubmit
 // This is to prevent a new uuid being generated when an existing task is being updated
 // Need to find a way to grab the taskId of the object that is currently in the input field, so PUT can correspond to it
-  updateTask = (taskID) => {
+  // updateTask = (taskID) => {
     
-    const taskToUpdate = {
-      taskId: taskID,
-      taskDescription: this.state.taskDescription,
-      completed: false,
-      // userId: 1,
-      // editItem: false
-    }
+  //   const taskToUpdate = {
+  //     taskId: taskID,
+  //     taskDescription: this.state.taskDescription,
+  //     completed: false,
+  //     // userId: 1,
+  //     // editItem: false
+  //   }
 
-    axios.put(`https://bgto94b970.execute-api.eu-west-2.amazonaws.com/dev/tasks/${taskID}`)
-      .then((response) => {
-    // handle success
-    const currentTasks = [...this.state.tasks, taskToUpdate];
+  //   axios.put(`https://bgto94b970.execute-api.eu-west-2.amazonaws.com/dev/tasks/${taskID}`)
+  //     .then((response) => {
+  //   // handle success
+  //   const currentTasks = [...this.state.tasks, taskToUpdate];
 
-    this.setState({
-      tasks: currentTasks,
-      taskDescription: ""
-    });
-    })
-    .catch(function (error) {
-    // handle error
-      console.error(error);
-    });
-  }
+  //   this.setState({
+  //     tasks: currentTasks,
+  //     taskDescription: ""
+  //   });
+  //   })
+  //   .catch(function (error) {
+  //   // handle error
+  //     console.error(error);
+  //   });
+  // }
 
 
 
@@ -155,7 +155,7 @@ class App extends React.Component {
 
       // Update a property on the identified task
       if (task.taskId === taskID) {
-        task.completed = true;
+        task.completed = 1;
         break;
       }
     }
@@ -176,12 +176,22 @@ class App extends React.Component {
       }
     }
     // Add it into the array of COMPLETE tasks
+    
+
+    axios.put(`https://bgto94b970.execute-api.eu-west-2.amazonaws.com/dev/tasks/${taskID}`, completedTask)
+      .then((response) => {
+    // handle success
     const doneTaskList = this.state.completedTasks;
     doneTaskList.push(completedTask);
-    // Update state 
+
     this.setState({
       tasks: incompleteTasks,
-      completedTasks: doneTaskList
+      completedTasks: doneTaskList,
+    });
+    })
+    .catch(function (error) {
+    // handle error
+      console.error(error);
     });
   }
 
