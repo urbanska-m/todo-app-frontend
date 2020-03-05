@@ -73,58 +73,51 @@ class App extends React.Component {
 // This function is then fired to 'Update' instead of handleSubmit
 // This is to prevent a new uuid being generated when an existing task is being updated
 // Need to find a way to grab the taskId of the object that is currently in the input field, so PUT can correspond to it
-  // updateTask = (e) => {
-  //   e.preventDefault();
-   
-  //   const taskToUpdate = {
-  //     taskDescription: this.state.taskDescription,
-  //     completed: false,
-  //     userId: 1,
-  //     // editItem: false
-  //   }
+  updateTask = (taskID) => {
+    
+    const taskToUpdate = {
+      taskId: taskID,
+      taskDescription: this.state.taskDescription,
+      completed: false,
+      // userId: 1,
+      // editItem: false
+    }
 
-  //   const currentTasks = [...this.state.tasks, taskToUpdate];
+    axios.put(`https://bgto94b970.execute-api.eu-west-2.amazonaws.com/dev/tasks/${taskID}`)
+      .then((response) => {
+    // handle success
+    const currentTasks = [...this.state.tasks, taskToUpdate];
 
-  //   this.setState({
-  //     tasks: currentTasks,
-  //     taskDescription: ""
-  //   });
-  // }
+    this.setState({
+      tasks: currentTasks,
+      taskDescription: ""
+    });
+    })
+    .catch(function (error) {
+    // handle error
+      console.error(error);
+    });
+  }
 
 
 
 // Corresponds to Edit button next to each task
 // When clicked, the task returns to the input field at the top of the page
 // Problem then arises with either 'Add' button generating new uuid, or 'Update' button not grabbing existing taskId
+
   editTask = (taskID) => {
     const tasks = this.state.tasks;
     const filteredTasks = tasks.filter(item => item.taskId !== taskID);
     const selectedItem = tasks.find(item => item.taskId === taskID);
-    
-    // const taskToUpdate = {
-    //   taskDescription: this.state.taskDescription,
-    //   completed: false,
-    //   userId: 1,
-    //   // editItem: false
-    // }
 
-    axios.put(`https://bgto94b970.execute-api.eu-west-2.amazonaws.com/dev/tasks/${taskID}`, selectedItem)
-      .then((response) => {
-    // handle success
+    console.log(selectedItem);
     
-
     this.setState({
       tasks: filteredTasks,
       taskDescription: selectedItem.taskDescription,
       taskId: selectedItem.taskId,
       completed: false,
       editItem: true
-    });
-
-    })
-    .catch(function (error) {
-    // handle error
-      console.error(error);
     });
   }
 
@@ -238,7 +231,7 @@ class App extends React.Component {
                 item={this.state.taskDescription}
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
-                // updateTask={this.updateTask}
+                updateTask={this.updateTask}
                 editItem={this.state.editItem} />
               <TaskArea
                 jobs={this.state.tasks}
