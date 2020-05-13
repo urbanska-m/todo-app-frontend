@@ -1,6 +1,6 @@
-# Get It Done - Front End
+# Get It Done - Front-End
 
-This is the front end of a To-Do Application called 'Get It Done', built throughout the [Tech Returners](https://techreturners.com) BBC Step Into Tech course. It integrates with a backend, available [here](https://github.com/urbanska-m/todo-app-backend).
+This is the front-end of a To-Do Application called 'Get It Done', built throughout the [Tech Returners](https://techreturners.com) BBC Step Into Tech course. It integrates with a back-end, available [here](https://github.com/urbanska-m/todo-app-backend).
 
 ### Technology Used
 
